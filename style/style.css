@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --cor-preta: #151515;
+    --cor-branca: #f2f2f2;
+    --cor-azul: #075CFF;
+}
+
+body {
+    background-color: var(--cor-branca);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 25pt;
+    top: 20px;
+    left: 0;
+    color: var(--cor-preta);
+}
+
+.blocoAdicionar {
+    background-color: var(--cor-preta);
+    padding: 10px;
+    width: 330px;
+    margin: 5% auto;
+    border-radius: 10px;
+    margin-top: 0px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.inputTarefas {
+    background-color: #444444;
+    border: none;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    color: var(--cor-branca);
+    width: 78%;
+    position: relative;
+    outline: none;
+}
+
+input.botaoAdicionar {
+    background-color: var(--cor-azul);
+    color: #f2f2f2;
+    padding: 10px;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    transition: .2s ease-in-out;
+}
+
+::placeholder {
+    color: var(--cor-branca);
+}
+
+.botaoAdicionar:hover,
+i:hover {
+    background-color: #2c07ff;
+    cursor: pointer;
+ 
+}
+
+.blocoTarefasAdicionadas {
+    background-color: var(--cor-preta);
+    padding: 10px;
+    width: 330px;
+    margin: 5% auto;
+    border-radius: 10px;
+    margin-top: 0px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+#tarefasAdicionadas {
+    text-align: center;
+    margin-top: 0px;
+}
+
+p{
+    color: var(--cor-branca);
+    font-size: 12pt;
+}
+
+.inputError{
+    border: red 1px solid;
+}
+
+.novoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+i {
+    background-color: #075CFF;
+    border-radius: 5px;
+    padding: 7px;
+    transition: .2s ease-in-out;
+    color: #f2f2f2;
+}
+
+
