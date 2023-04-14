@@ -1,6 +1,11 @@
 const botaoAdicionar = document.querySelector(".botaoAdicionar")
 const valorInput = document.querySelector(".inputTarefas")
 const blocoTarefas = document.querySelector(".blocoTarefasAdicionadas")
+const filtrar = document.getElementById("filtrar")
+const blocoFiltrar = document.querySelector(".blocoFiltrar")
+
+
+
 
 
 
@@ -14,6 +19,8 @@ const adicionarTarefa = () =>{
     // aqui o "!" representa "não", no caso o SE o input NÃO for verdadeiro, ou seja, não for maior que 1, adiciona uma classe que deixará a borda do input vermelha
     if(!inputValido){
         return valorInput.classList.add("inputError");
+    } else{
+        
     }
 
 
@@ -28,18 +35,30 @@ const adicionarTarefa = () =>{
     trashIcon.classList.add('fa-solid')
     trashIcon.classList.add('fa-trash')
 
-    trashIcon.addEventListener("click", () => 
-        deletarTarefa(novoContainer, novaTarefa)
-    );
     
     novoContainer.appendChild(novaTarefa)
     novoContainer.appendChild(trashIcon)
-
+    
     blocoTarefas.appendChild(novoContainer)
 
-    novoContainer.addEventListener("click", function() {
-        this.parentNode.removeChild(this);
-    });
+        
+    trashIcon.addEventListener("click", () => 
+        deletarTarefa()
+    );
+
+    const deletarTarefa = () => {
+        novoContainer.addEventListener("click", function() {
+            this.parentNode.removeChild(this);
+        });
+    }
+    
+    filtrar.style.display = 'block';
+
+
+    filtrar.addEventListener('click', () => 
+        blocoFiltrar.style.display ('block')
+    )
+
 
     valorInput.value = ''
     valorInput.focus()
