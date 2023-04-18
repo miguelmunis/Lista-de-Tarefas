@@ -3,7 +3,8 @@
 :root {
     --cor-preta: #151515;
     --cor-branca: #f2f2f2;
-    --cor-azul: #075CFF;
+    --cor-azul: #ff4107;
+    --cor-azulescuro: #ff009d; 
 }
 
 body, select {
@@ -23,7 +24,7 @@ h1 {
     color: var(--cor-preta);
 }
 
-.blocoAdicionar, .blocoTarefasAdicionadas, .blocoFiltrar {
+.blocoAdicionar, .blocoTarefasAdicionadas, #blocoFiltrar {
     background-color: var(--cor-preta);
     padding: 10px;
     width: 330px;
@@ -38,6 +39,7 @@ h1 {
     background-color: #444444;
     border: none;
     padding: 10px;
+    margin-top: 16px;
     margin-bottom: 16px;
     border-radius: 5px;
     color: var(--cor-branca);
@@ -46,8 +48,8 @@ h1 {
     outline: none;
 }
 
-input.botaoAdicionar {
-    background-color: var(--cor-azul);
+input.botaoAdicionar{
+    background-image: linear-gradient(to right, var(--cor-azulescuro), var(--cor-azul));
     color: #f2f2f2;
     padding: 10px;
     width: 40px;
@@ -61,7 +63,7 @@ input.botaoAdicionar {
 }
 
 .botaoAdicionar:hover,
-i:hover {
+i:hover, #botaoAplicar{
     background-color: #2c07ff;
     cursor: pointer;
  
@@ -92,7 +94,7 @@ p{
 }
 
 i {
-    background-color: #075CFF;
+    background-image: linear-gradient(to right, var(--cor-azulescuro), var(--cor-azul));
     border-radius: 5px;
     padding: 7px;
     transition: .2s ease-in-out;
@@ -121,7 +123,9 @@ i {
     color: #bebebe;
 }
 
-.blocoFiltrar{
+#blocoFiltrar{
+    top: -180px;
+    z-index: 100;
     display: none;
 }
 
@@ -147,8 +151,25 @@ select:hover{
     background-color: var(--cor-preta);
     font-size: 12pt;
     outline: none;
-    padding: 7px;
 }
+
+.concluida{
+    color: green;
+}
+
+#botaoAplicar{
+    background-image: linear-gradient(to right, var(--cor-azulescuro), var(--cor-azul));
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    color: var(--cor-branca);
+    width: 30%;
+}
+
+#modalFiltrar{
+    background-color: #151515;
+}
+
 
 
 
