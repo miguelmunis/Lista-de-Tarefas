@@ -83,7 +83,7 @@ p{
     border: red 1px solid;
 }
 
-.novoContainer {
+#novoContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -153,7 +153,14 @@ select:hover{
     outline: none;
 }
 
-.concluida{
+#concluida{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    margin-top: 6px;
+    margin-bottom: 6px;
     color: green;
 }
 

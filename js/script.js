@@ -19,7 +19,7 @@ const adicionarTarefa = () =>{
 
     //adiciona uma nova DIV (novoContainer) que contém as tarefas no Bloco de Tarefas, já existente.
     const novoContainer = document.createElement('div')
-    novoContainer.classList.add('novoContainer')
+    novoContainer.setAttribute('id', 'novoContainer')
 
     //adiciona a nova tarefa, com o valor do input.
     const novaTarefa = document.createElement('p')
@@ -66,50 +66,45 @@ const adicionarTarefa = () =>{
         blocoFiltrar.style.display = 'none'
     });
  
-    const tarefas = document.querySelectorAll('.novoContainer');
+    const tarefas = document.querySelectorAll('#novoContainer');
     
     for (let i = 0; i < tarefas.length; i++) {
         tarefas[i].addEventListener('click', marcarConcluida);
     }
     
     function marcarConcluida(evento){
-        evento.target.classList.add('concluida');
+        evento.target.setAttribute('id', 'concluida')
     }
     
-    const concluida = document.querySelector('.concluida');
-    console.log(concluida)
-
-
-      
-
     //depois de adicionar uma tarefa, ele limpa o input e direciona o foco direto pra ele, para adicionar uma nova tarefa.
     valorInput.value = ''
     valorInput.focus()
 
-    /*const select = document.getElementById('estadoTarefa')
-
+    const select = document.getElementById('estadoTarefa')
 
     select.addEventListener("change", function() {
 
         const valorSelect = select.value;
-        const tarefasConcluidas = document.getElementsByClassName("concluida");
+        const tarefaConcluida = document.getElementById('concluida')
+        const tarefaPendente = document.getElementById('novoContainer')
 
         switch (valorSelect){
             case 'Concluídas':
-                novaTarefa.parentElement.style.display = 'none'
-                tarefasConcluidas
+                tarefaPendente.style.display = 'none';
             break;
             case 'Pendentes':
-                tarefasConcluidas.style.display = 'none';
+                tarefaConcluida.style.display = 'none'  
+                tarefaPendente.style.display = 'flex';  
             break;
             case 'Todas':
-                novoContainer.style.display = 'block';
+                tarefaConcluida.style.display = 'flex'       
+                tarefaPendente.style.display = 'flex';  
             break;
             default:
                 console.log('J.')
             break;     
         };
-    });*/
+    });
     
 };
 
