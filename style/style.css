@@ -105,7 +105,7 @@ p{
     padding: 7px 9px;
 }
 
-#icon{
+i, #icon{
     background-color: var(--cor-laranja);
     border-radius: 5px;
     padding: 7px;
@@ -229,11 +229,13 @@ select:hover{
 }
 
 #iconContato {
+    background-color: transparent;
     transition: .2s ease-in-out;
     color: var(--cor-laranja);
 }
 
 #iconContato:hover {
+    
     color: var(--cor-laranjaescuro);
     cursor: pointer;
     text-decoration: none;
