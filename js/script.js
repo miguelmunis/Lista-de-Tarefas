@@ -2,8 +2,7 @@ const botaoAdicionar = document.querySelector(".botaoAdicionar")
 const valorInput = document.querySelector(".inputTarefas")
 const blocoTarefas = document.querySelector(".blocoTarefasAdicionadas")
 const filtrar = document.getElementById("filtrar")
-
-
+const blocoHistorico = document.getElementById('blocoHistorico')
 
 
 // Retorna um valor booleano, caso o input tenha um valor, retornará verdadeiro, senão, falso.
@@ -19,7 +18,7 @@ const adicionarTarefa = () =>{
 
     //adiciona uma nova DIV (novoContainer) que contém as tarefas no Bloco de Tarefas, já existente.
     const novoContainer = document.createElement('div')
-    novoContainer.setAttribute('id', 'novoContainer')
+    novoContainer.classList.add('novoContainer')
 
     //adiciona a nova tarefa, com o valor do input.
     const novaTarefa = document.createElement('p')
@@ -65,49 +64,76 @@ const adicionarTarefa = () =>{
     botaoAplicar.addEventListener("click", function(){
         blocoFiltrar.style.display = 'none'
     });
- 
-    const tarefas = document.querySelectorAll('#novoContainer');
+
+    const tarefas = document.querySelectorAll('.novoContainer');
     
     for (let i = 0; i < tarefas.length; i++) {
         tarefas[i].addEventListener('click', marcarConcluida);
     }
     
     function marcarConcluida(evento){
-        evento.target.setAttribute('id', 'concluida')
+        evento.target.setAttribute('class', 'concluida')
     }
     
     //depois de adicionar uma tarefa, ele limpa o input e direciona o foco direto pra ele, para adicionar uma nova tarefa.
     valorInput.value = ''
     valorInput.focus()
 
-    const select = document.getElementById('estadoTarefa')
+        const select = document.getElementById('estadoTarefa')
+        select.addEventListener("change", function() {
+            const valorSelect = select.value;
 
-    select.addEventListener("change", function() {
+            switch (valorSelect){
+                case 'Concluídas':
+                    //limpa as classes adicionadas anteriormente
+                    novoContainer.classList.remove('aparecer')
+                    novoContainer.classList.remove('esconder')
 
-        const valorSelect = select.value;
-        const tarefaConcluida = document.getElementById('concluida')
-        const tarefaPendente = document.getElementById('novoContainer')
+                    //se o elemento NÃO tiver a classe 'concluida', ou seja, não tiver sido clicada, adicione a classe esconder.
+                    if(!novoContainer.classList.contains("concluida")){
+                        document.getElementsByClassName = (novoContainer).classList.add('esconder')
+                    } else{
+                        document.getElementsByClassName = (novoContainer).classList.add('aparecer')
+                    }
+                break;
+                case 'Pendentes':
+                    novoContainer.classList.remove('aparecer')
+                    novoContainer.classList.remove('esconder')
 
-        switch (valorSelect){
-            case 'Concluídas':
-                tarefaPendente.style.display = 'none';
-            break;
-            case 'Pendentes':
-                tarefaConcluida.style.display = 'none'  
-                tarefaPendente.style.display = 'flex';  
-            break;
-            case 'Todas':
-                tarefaConcluida.style.display = 'flex'       
-                tarefaPendente.style.display = 'flex';  
-            break;
-            default:
-                console.log('J.')
-            break;     
-        };
-    });
+                    //se o elemento TIVER a classe 'concluida', foi clicada, adicione a classe esconder, e aparecer as classes 'novoContainer', criado por padrão.
+                    if(novoContainer.classList.contains("concluida")){
+                        document.getElementsByClassName = (novoContainer).classList.add('esconder')
+                    } else{
+                        document.getElementsByClassName = (novoContainer).classList.add('aparecer')
+                    }
+                break;
+                case 'Todas':
+
+                    //faz todos as tarefas terem a classe aparecer.
+                    novoContainer.classList.add('aparecer')  
+                break;
+                default:
+                    console.log('J.')
+                break;     
+            };
+        });
     
-};
+        const tarefaHistorico = document.createElement('div');
+        tarefaHistorico.setAttribute('id', 'tarefaHistorico');
 
+        const tarefasDeletadas = document.createElement('p');
+        tarefasDeletadas.innerHTML = novaTarefa.value;
+
+        const recoverIcon = document.createElement('i')
+        recoverIcon.classList.add('fa-solid')
+        recoverIcon.classList.add('fa-upload')
+
+        tarefaHistorico.appendChild(tarefasDeletadas);
+        tarefaHistorico.appendChild(recoverIcon)
+
+        blocoHistorico.appendChild(tarefaHistorico)
+
+};
 
 //Se o input tiver um valor maior que 1, ele removerá a borda de erro vermelha do input.
 const removerErroInput = () =>{
@@ -117,8 +143,13 @@ const removerErroInput = () =>{
     }
 }
 
+function mostrarHistorico(){
+    blocoHistorico.style.display = 'block'    
+}
+
+function esconderHistorico(){
+    blocoHistorico.style.display = 'none'    
+}
+
 botaoAdicionar.addEventListener("click", () => adicionarTarefa());
 valorInput.addEventListener("change", () => removerErroInput());
-
-
-

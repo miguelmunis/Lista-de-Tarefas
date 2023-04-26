@@ -20,7 +20,7 @@
         </div>
 
         <div class="blocoTarefasAdicionadas">
-            <i class="fa-solid fa-clock-rotate-left"></i>
+            <i class="fa-solid fa-clock-rotate-left" onclick="mostrarHistorico()" id="icon"></i>
             <p id="tarefasAdicionadas">Suas Tarefas</p>
         </div>
         
@@ -48,8 +48,14 @@
             <input type="button" value="Aplicar" id="botaoAplicar">
         </div>
 
+        <div id="blocoHistorico">
+            <i class="fa-sharp fa-solid fa-xmark" id="iconFechar" onclick="esconderHistorico()"></i>
+            <p id="historico">Histórico de Tarefas</p>
+        </div>
+
+
     </section>
     <script src="https://kit.fontawesome.com/8f682f19ac.js" crossorigin="anonymous"></script>
     <script src="/js/script.js" defer ></script>
 </body>
-</html>
+</html> 
